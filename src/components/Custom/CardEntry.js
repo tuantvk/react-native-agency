@@ -1,29 +1,35 @@
-import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Image, StyleSheet } from 'react-native';
+import Text from './Text';
+import { Card } from 'native-base';
 
-export class CardEntry extends Component {
-  render() {
-    return (
-      <View style={styles.card}>
-        <View style={styles.image} />
-        <Text>Adidas 1</Text>
-        <Text>$12</Text>
-      </View>
-    )
-  }
-}
+const CardEntry = ({ item }) => (
+  <Card style={styles.card}>
+    <Image source={{ uri: item.image }} style={styles.image} />
+    <View style={styles.info}>
+      <Text>{item.name}</Text>
+      <Text bold={true}>${item.price}</Text>
+    </View>
+  </Card>
+)
 
 const styles = StyleSheet.create({
   card: {
-    width: 110,
-    height: 170,
-    marginRight: 8,
-    borderRadius: 8
+    width: 125,
+    height: 190,
+    marginRight: 12,
+    borderRadius: 6,
   },
   image: {
-    backgroundColor: '#cacaca',
     width: '100%',
-    height: 130
+    height: 135,
+    borderTopLeftRadius: 6,
+    borderTopRightRadius: 6
+  },
+  info: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 8
   }
 });
 

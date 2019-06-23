@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Text,
   ImageBackground,
   StatusBar,
   View,
@@ -12,14 +11,15 @@ import {
 import Images from '../components/Images';
 import {
   CardEntry,
+  Text,
 } from '../components/Custom';
 import * as Animatable from 'react-native-animatable';
 
 const PRODUCTS = [
-  { id: 1, name: '' },
-  { id: 2, name: '' },
-  { id: 3, name: '' },
-  { id: 4, name: '' },
+  { id: 1, name: 'Adidas 1', price: 12, image: Images.adidas_1 },
+  { id: 2, name: 'Adidas 2', price: 52, image: Images.adidas_2 },
+  { id: 3, name: 'Adidas 3', price: 16, image: Images.adidas_3 },
+  { id: 4, name: 'Adidas 4', price: 22, image: Images.adidas_4 },
 ];
 const { width, height } = Dimensions.get('window');
 
@@ -32,7 +32,7 @@ export class Home extends Component {
   _keyExtractor = (item) => item.id.toString();
 
   _itemProduct = ({ item, index }) => (
-    <CardEntry />
+    <CardEntry item={item} />
   )
 
   render() {
@@ -40,23 +40,28 @@ export class Home extends Component {
       <View style={styles.container}>
         <StatusBar hidden={true} />
         <ImageBackground source={{ uri: Images.adidas_hoodie }} style={styles.img_bg}>
-          <Text>Inside</Text>
         </ImageBackground>
         <View style={styles.sub_story}>
           <View style={styles.social}>
-            <Text style={styles.social_item}>Fb.</Text>
-            <Text style={styles.social_item}>Tw.</Text>
-            <Text style={styles.social_item}>In.</Text>
+            <Text color="#fff" style={styles.social_item}>Fb.</Text>
+            <Text color="#fff" style={styles.social_item}>Tw.</Text>
+            <Text color="#fff" style={styles.social_item}>In.</Text>
           </View>
           <View style={styles.content}>
-            <Text>You also make like</Text>
+            <Text bold={true} style={styles.also_make}>You also make like</Text>
             <FlatList
               horizontal
               data={PRODUCTS}
               renderItem={this._itemProduct}
               keyExtractor={this._keyExtractor}
               showsHorizontalScrollIndicator={false}
+              onEndReachedThreshold={10}
             />
+          </View>
+          <View style={styles.category}>
+            <Text color="#e94e2d">Women</Text>
+            <Text color="#e94e2d">Men</Text>
+            <Text color="#e94e2d">Kids</Text>
           </View>
         </View>
       </View>
@@ -75,7 +80,8 @@ const styles = StyleSheet.create({
     zIndex: -1
   },
   sub_story: {
-    padding: 30,
+    paddingVertical: 25,
+    paddingLeft: 30,
     backgroundColor: '#fff',
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
@@ -100,10 +106,21 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   social_item: {
-    color: '#fff'
+
   },
   content: {
     marginVertical: 30
+  },
+  also_make: {
+    marginBottom: 25
+  },
+  category: {
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 35,
+    left: 0,
+    right: 0
   }
 });
 
