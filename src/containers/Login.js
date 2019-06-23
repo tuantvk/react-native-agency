@@ -2,32 +2,10 @@ import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text } from '../components/Custom';
 import { Icon, Item, Input, Label, Card } from 'native-base';
-import { Navigation } from 'react-native-navigation';
 
 export class Login extends Component {
 
-  _login = () => {
-    Navigation.setRoot({
-      root: {
-        stack: {
-          id: 'App',
-          children: [
-            {
-              component: {
-                name: 'Home',
-                options: {
-                  topBar: { visible: false, height: 0, },
-                  customTransition: {
-                    duration: 1
-                  }
-                }
-              }
-            }
-          ],
-        }
-      }
-    })
-  }
+  _login = () => this.props.navigation.navigate('Home');
 
   render() {
     return (
