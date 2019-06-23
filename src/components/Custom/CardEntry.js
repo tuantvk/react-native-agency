@@ -8,7 +8,7 @@ const CardEntry = ({ item }) => (
     <Image source={{ uri: item.image }} style={styles.image} />
     <View style={styles.info}>
       <Text>{item.name}</Text>
-      <Text bold={true}>${item.price}</Text>
+      <Text size="S" bold={true}>${item.price}</Text>
     </View>
   </Card>
 )

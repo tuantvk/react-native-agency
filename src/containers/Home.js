@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   ImageBackground,
-  StatusBar,
   View,
   Dimensions,
   StyleSheet,
@@ -37,12 +36,11 @@ export class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar hidden={true} />
         <ImageBackground source={{ uri: Images.adidas_hoodie }} style={styles.img_bg}>
         </ImageBackground>
         <View style={styles.sub_story}>
           <View style={styles.social}>
-            <Text color="#fff" style={styles.social_item}>Fb.</Text>
+            <Text color="#e94e2d" style={styles.social_item}>Fb.</Text>
             <Text color="#fff" style={styles.social_item}>Tw.</Text>
             <Text color="#fff" style={styles.social_item}>In.</Text>
           </View>
@@ -58,7 +56,7 @@ export class Home extends Component {
             />
           </View>
           <View style={styles.category}>
-            <Text color="#e94e2d">Women</Text>
+            <Text style={styles.badge} color="#fff">Women</Text>
             <Text color="#e94e2d">Men</Text>
             <Text color="#e94e2d">Kids</Text>
           </View>
@@ -120,7 +118,13 @@ const styles = StyleSheet.create({
     bottom: 35,
     left: 0,
     right: 0
-  }
+  },
+  badge: {
+    backgroundColor: '#e94e2d',
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 20
+  },
 });
 
 export default Home
