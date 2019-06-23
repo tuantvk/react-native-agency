@@ -14,16 +14,15 @@ import {
   Text,
 } from '../components/Custom';
 import * as Animatable from 'react-native-animatable';
+import { PRODUCTS, CATEGORY } from '../utils';
 
-const PRODUCTS = [
-  { id: 1, name: 'Adidas 1', price: 12, image: Images.adidas_1 },
-  { id: 2, name: 'Adidas 2', price: 52, image: Images.adidas_2 },
-  { id: 3, name: 'Adidas 3', price: 16, image: Images.adidas_3 },
-  { id: 4, name: 'Adidas 4', price: 22, image: Images.adidas_4 },
-];
 const { width, height } = Dimensions.get('window');
 
 export class Home extends Component {
+
+  state = {
+    category: 0,
+  }
 
   handleViewRef = ref => this.view = ref;
 
