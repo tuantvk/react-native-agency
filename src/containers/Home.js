@@ -4,7 +4,6 @@ import {
   View,
   Dimensions,
   StyleSheet,
-  ScrollView,
   FlatList,
 } from 'react-native';
 import Images from '../components/Images';
@@ -19,8 +18,11 @@ const { width, height } = Dimensions.get('window');
 
 export class Home extends Component {
 
-  state = {
-    category: 0,
+  constructor(props) {
+    super(props);
+    this.state = {
+      category: 0,
+    }
   }
 
   handleViewRef = ref => this.view = ref;
@@ -37,6 +39,20 @@ export class Home extends Component {
     return (
       <View style={styles.container}>
         <ImageBackground source={{ uri: Images.adidas_hoodie }} style={styles.img_bg}>
+          <Text style={styles.felling} color="#fff" size="BS">perfect feeling</Text>
+          <View style={styles.content_bg}>
+            <Animatable.Text animation="fadeInLeft" direction="alternate" duration={650} easing="linear">
+              <Text>Just for you</Text>
+            </Animatable.Text>
+            <View style={styles.title}>
+              <Animatable.Text animation="fadeInLeft" direction="alternate" delay={660} duration={500} easing="linear">
+                <Text bold={true} size="BS" color="#000">SPRING</Text>
+              </Animatable.Text>
+            </View>
+            <Animatable.Text animation="fadeInLeft" direction="alternate" delay={1100} duration={450} easing="linear">
+              <Text bold={true} size="L">Collection</Text>
+            </Animatable.Text>
+          </View>
         </ImageBackground>
         <View style={styles.sub_story}>
           <View style={styles.social}>
@@ -61,7 +77,7 @@ export class Home extends Component {
             <Text color="#e94e2d">Kids</Text>
           </View>
         </View>
-      </View>
+      </View >
     )
   }
 }
@@ -74,7 +90,15 @@ const styles = StyleSheet.create({
   img_bg: {
     width,
     height: height / 1.5,
-    zIndex: -1
+    zIndex: -1,
+    position: 'relative'
+  },
+  content_bg: {
+    paddingTop: 45,
+    paddingHorizontal: 30
+  },
+  title: {
+    marginTop: 30
   },
   sub_story: {
     paddingVertical: 25,
@@ -125,6 +149,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     borderRadius: 20
   },
+  felling: {
+    transform: [{ rotate: "90deg" }],
+    position: 'absolute',
+    top: 60,
+    left: -width / 3,
+    letterSpacing: 2.5
+  }
 });
 
 export default Home
